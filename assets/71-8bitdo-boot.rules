@@ -5,3 +5,7 @@ SUBSYSTEM=="usb", ATTRS{idProduct}=="3208", ATTRS{idVendor}=="2dc8", TAG+="uacce
 # 8BitDo SN30/SF30 Pro gamepad
 SUBSYSTEM=="hidraw", ATTRS{idProduct}=="5750", ATTRS{idVendor}=="2dc8", TAG+="uaccess"
 SUBSYSTEM=="usb", ATTRS{idProduct}=="5750", ATTRS{idVendor}=="2dc8", TAG+="uaccess"
+
+# 8BitDo Wireless USB Adapter
+SUBSYSTEM=="hidraw", ATTRS{idProduct}=="5760", ATTRS{idVendor}=="0483", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTRS{idProduct}=="5760", ATTRS{idVendor}=="0483", TAG+="uaccess"
