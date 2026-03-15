@@ -155,6 +155,19 @@ install_segoe_ui_font() {
     success "Font setup complete"
 }
 
+conditional_install_wine_mono_debian() {
+    if [ ! -e /etc/os-release ]; then
+        return
+    fi
+    source /etc/os-release
+    if [ "$ID" == "debian" ]; then
+        header "Installing wine-mono for Debian"
+        wget -O wine-mono.msi "https://dl.winehq.org/wine/wine-mono/11.0.0/wine-mono-11.0.0-x86.msi"
+        WINEPREFIX="$WINE_PREFIX" wine wine-mono.msi
+        success "Installed wine-mono"
+    fi
+}
+
 download_and_install_updater() {
     header "Downloading 8BitDo Firmware Updater"
 
@@ -274,6 +287,8 @@ setup_wine_prefix() {
         success "Wine prefix created"
 
         install_segoe_ui_font
+
+        conditional_install_wine_mono_debian
 
         echo "Shutting down wine server to apply changes..."
         WINEPREFIX="$WINE_PREFIX" wineserver -k
