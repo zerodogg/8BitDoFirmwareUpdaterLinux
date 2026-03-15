@@ -276,7 +276,7 @@ setup_wine_prefix() {
         install_segoe_ui_font
 
         echo "Shutting down wine server to apply changes..."
-        WINEPREFIX="$WINE_PREFIX" wineserver -k
+        WINEPREFIX="$WINE_PREFIX" wineserver -k || :
         success "Wine server shutdown complete"
     fi
 }
